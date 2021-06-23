@@ -46,7 +46,7 @@ class PlannerMain : public PlannerBase {
 
 public:
   PlannerMain()
-      : _base_date((date::year)2021, (date::month)1, (date::day)1),
+      : _base_date((date::year)2021, (date::month)6, (date::day)23),
         _num_years(10), _filename("test.pdf") {
     _page_title = "Planner";
     _note_section_percentage = 0.5;
@@ -61,9 +61,9 @@ public:
               short first_day_of_week,
               bool is_left_handed,
               bool is_portrait)
-      : _base_date((date::year)year, (date::month)1, (date::day)1),
+      : _base_date((date::year)year, (date::month)6, (date::day)23),
         _filename(filename), _num_years(num_years) {
-    _page_title = "  Planner  ";
+    _page_title = "  Brad's Notebook  ";
     _page_height = height;
     _page_width = width;
     _margin_width = margin;

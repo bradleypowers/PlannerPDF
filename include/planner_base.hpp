@@ -146,10 +146,10 @@ public:
                         HPDF_REAL y_stop) {
 
     HPDF_REAL x = x_start;
-    const HPDF_UINT16 DASH_MODE1[] = {2, HPDF_UINT16(dot_spacing_x)};
+    const HPDF_UINT16 DASH_MODE1[] = {1, HPDF_UINT16(dot_spacing_x)};
 
     for (HPDF_REAL y = y_start; y < y_stop; y = y + dot_spacing_y) {
-      HPDF_Page_SetLineWidth(page, 2);
+      HPDF_Page_SetLineWidth(page, 1);
       HPDF_Page_SetDash(page, DASH_MODE1, 2, 0);
       HPDF_Page_MoveTo(page, x, page_height - y);
       HPDF_Page_LineTo(page, x_stop, page_height - y);

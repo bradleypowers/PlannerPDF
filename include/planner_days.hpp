@@ -67,7 +67,7 @@ public:
     _page_title = page_title;
     _grid_string = grid_string;
     _parent = parent_month;
-    _margin_width = margin;
+    _margin_width = 0;
     _margin_left = _margin_width;
     _margin_right = _page_width - _margin_width;
     _is_left_handed = is_left_handed;
@@ -75,8 +75,8 @@ public:
   }
 
   void CreateTasksSection(HPDF_Doc& doc) {
-    std::string year_title_string = "Tasks";
-    HPDF_REAL notes_divider_x = _page_width * _note_section_percentage;
+    std::string year_title_string = " Notes ";
+    HPDF_REAL notes_divider_x = _page_width * 0; //_note_section_percentage;
     HPDF_REAL section_x_start;
     HPDF_REAL section_y_start;
     HPDF_REAL section_x_stop;
@@ -103,20 +103,20 @@ public:
                           years_section_text_x,
                           _page_height -
                               (section_y_start + _note_title_font_size + 10));
-    HPDF_Page_ShowText(_page, year_title_string.c_str());
+    //HPDF_Page_ShowText(_page, year_title_string.c_str());
     HPDF_Page_EndText(_page);
 
     /* @TODO : This increases filesize a lot, try to replace with pattern fill
     or background png etc */
     FillAreaWithDots(_page,
-                     40,
-                     40,
+                     20,
+                     20,
                      _page_height,
                      _page_width,
-                     section_x_start + 30,
-                     section_y_start + (2 * _note_title_font_size),
-                     section_x_stop - 10,
-                     section_y_stop - 30);
+                     section_x_start + 20,
+                     section_y_start + 20,// + (2 * _note_title_font_size),
+                     section_x_stop - 20,
+                     section_y_stop - 20);
   }
 
   void CreateNavigation(HPDF_Doc& doc) { AddNavigation(); }
@@ -124,7 +124,7 @@ public:
   void Build(HPDF_Doc& doc) {
     CreatePage(doc, _page_height, _page_width);
     CreateTitle();
-    CreateNotesSection();
+    //CreateNotesSection();
     CreateTasksSection(doc);
   }
 };
